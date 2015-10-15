@@ -14,14 +14,32 @@
       </div>
     </div>
   </div>
-
-  <div class="input-group">
-    <span class="input-group-addon" id="addon-blogid">id</span>
-    <input ng-model="blogeditor.blogid" type="text" class="form-control" placeholder="id" aria-describedby="addon-blogid">
-  </div>
   <div class="input-group">
     <span class="input-group-addon" id="addon-blogyear">year</span>
-    <input ng-model="blogeditor.blogyear" type="text" class="form-control" placeholder="year" aria-describedby="addon-blogyear">
+    <input ng-model="blogeditor.blogyear" type="text" class="form-control" placeholder="YEAR" aria-describedby="addon-blogyear">
   </div>
-  <button type="button" class="btn btn-primary" ng-click="blogeditor.post(blogeditor.blogid, blogeditor.blogyear, '', '')">Post</button>
+  <button type="button" class="btn btn-primary" ng-click="blogeditor.setYear(blogeditor.blogyear)">Post</button>
+
+<ul>
+  <li ng-repeat="post in blogeditor.postListArrayIter">{{post}}</li>
+</ul>
+
+  <div class="input-group">
+    <span class="input-group-addon" id="addon-blogid">id (4 digit)</span>
+    <input ng-model="blogeditor.blogid" type="text" class="form-control" placeholder="IDID" aria-describedby="addon-blogid">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon" id="addon-blogdate">Date (YYYY-MM-DD)</span>
+    <input ng-model="blogeditor.blogdate" type="text" class="form-control" placeholder="YYYY-MM-DD" aria-describedby="addon-blogdate">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon" id="addon-blogtitle">Title</span>
+    <input ng-model="blogeditor.blogtitle" type="text" class="form-control" placeholder="catchphrase" aria-describedby="addon-blogtitle">
+  </div>
+  <div class="input-group">
+    <span class="input-group-addon" id="addon-blogcontent">content</span>
+    <input ng-model="blogeditor.blogcontent" type="text" class="form-control" placeholder="what happened today?" aria-describedby="addon-blogcontent">
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="blogeditor.post(blogeditor.blogid, blogeditor.blogyearsaved, blogeditor.blogdate, blogeditor.blogtitle, blogeditor.blogcontent)">Post</button>
+  <div class="alert alert-success" role="alert" ng-show="blogeditor.postSuccess">Post submitted</div>
 </div>
