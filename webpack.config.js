@@ -4,20 +4,23 @@ path = require('path');
 
 var APP = __dirname + '/app';
 
-module.exports = {
+var nodedir = __dirname + '/node_modules'
+
+var config = {
   context: APP,
   entry: {
     app: './js/main.js'
   },
+  resolve: {alias: {}},
   output: {
     filename: 'bundle.js',
     path: APP
   },
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader' },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
-      { test: /\.scss$/,loader: 'style-loader!css-loader!sass-loader' }
+      { test: /\.js$/, loader: 'babel-loader' }
     ]
   }
 }
+
+module.exports = config;

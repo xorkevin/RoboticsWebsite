@@ -6,22 +6,22 @@ class HomeController {
   constructor($routeParams) {
     this.routeParams = $routeParams;
     this.map = {
-      center: {
-        latitude: 37.323098,
-        longitude: -121.778666
+      center       : {
+        latitude   : 37.323098,
+        longitude  : -121.778666
       },
-      zoom: 14,
-      options: {
+      zoom         : 14,
+      options      : {
         scrollwheel: false
       }
     };
     this.marker = {
-      idKey: 128,
-      coords: {
-        latitude: 37.323098,
+      idKey      : 128,
+      coords     : {
+        latitude : 37.323098,
         longitude: -121.778666
       },
-      options: {
+      options    : {
         draggable: false
       }
     }
