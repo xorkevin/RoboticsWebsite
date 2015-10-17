@@ -1,4 +1,6 @@
-<div class = "container">
+<div class="container">
+
+
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="row card-row">
@@ -14,15 +16,38 @@
       </div>
     </div>
   </div>
+
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row card-row">
+        <div class="col-md-12">
+          <div class="mdl-card mdl-shadow--4dp card-full-width card-height-resize">
+            <div class="mdl-card__supporting-text card-full-width card-text-black">
+              <h4>Content formatting:</h4>
+              <br>
+              Sections are denoted by <code>&lt;section_type&gt;:&lt;content_goes_here&gt;[!] </code><br>
+              Example: <code>p:Hello World![!]</code><br>
+              <h5>Types:</h5>
+              <ul>
+                <li>    <code>p</code> : paragraph, input text as content</li>
+                <li>  <code>img</code> : image, input url as content</li>
+                <li><code>video</code> : !WARNING in development; do not use</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="input-group">
     <span class="input-group-addon" id="addon-blogyear">year</span>
     <input ng-model="blogeditor.blogyear" type="text" class="form-control" placeholder="YEAR" aria-describedby="addon-blogyear">
+    <span class="input-group-addon" id="addon-blogyear2"><button type="button" class="btn btn-primary btn-sm" ng-click="blogeditor.setYear(blogeditor.blogyear)">Select</button></span>
   </div>
-  <button type="button" class="btn btn-primary" ng-click="blogeditor.setYear(blogeditor.blogyear)">Post</button>
 
-<ul>
-  <li ng-repeat="post in blogeditor.postListArrayIter">{{post}}</li>
-</ul>
 
   <div class="input-group">
     <span class="input-group-addon" id="addon-blogid">id (4 digit)</span>
@@ -42,4 +67,13 @@
   </div>
   <button type="button" class="btn btn-primary" ng-click="blogeditor.post(blogeditor.blogid, blogeditor.blogyearsaved, blogeditor.blogdate, blogeditor.blogtitle, blogeditor.blogcontent)">Post</button>
   <div class="alert alert-success" role="alert" ng-show="blogeditor.postSuccess">Post submitted</div>
+
+
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="post in blogeditor.postListArrayIter | orderBy: 'id'">
+      <button type="button" class="btn btn-danger" ng-click="blogeditor.delete(post)">X</button>  {{post.title}} | {{post.date}} | {{post.id}}
+    </li>
+  </ul>
+
+
 </div>

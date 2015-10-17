@@ -7,7 +7,7 @@ let apiConfig = blogconfig.roboticsfirebase;
 class BlogeditorController {
   constructor($firebaseObject, $firebaseArray, $firebaseAuth) {
     this.fb = new Firebase(apiConfig.main);
-
+    this.loggedin = false;
     this.setYear = (year)=> {
       this.blogyearsaved = year;
       this.postListArray = this.fb.child(apiConfig.postList).child(year);
@@ -23,14 +23,16 @@ class BlogeditorController {
     this.login = ()=> {
       this.auth.$authWithOAuthPopup("google").then((authData)=> {
         this.authuid = authData.uid;
+        this.loggedin = true;
       }).catch((error)=> {
         console.log("Authentication failed:", error);
       });
     };
 
     this.logout = ()=> {
-      this.authuid = "logged out";
+      this.authuid = "Logged out";
       this.auth.$unauth();
+      this.loggedin = false;
     };
 
     this.blogdate = moment().format('YYYY-MM-DD');
@@ -38,6 +40,14 @@ class BlogeditorController {
     this.postSuccess = false;
 
     this.post = (aId, aYear, aDate, aTitle, aContent)=> {
+      if(!this.loggedin){
+        this.postSuccess = false;
+        return;
+      }
+      if(aYear == ''){
+        this.postSuccess = false;
+        return;
+      }
       let id = aYear+aId;
 
       let post = this.postsArray.push();
@@ -63,6 +73,23 @@ class BlogeditorController {
       this.blogtitle = '';
       this.blogcontent = '';
       this.postSuccess = true;
+
+      this.logout();
+    };
+
+    this.delete = (post)=>{
+      if(!this.loggedin){
+        return;
+      }
+      if(!confirm('are you sure you want to delete post: ' + post.id)){
+        return;
+      }
+      console.log(post);
+      let postListEntry = $firebaseObject(this.postListArray.child(post.id));
+      let key = postListEntry.idkey;
+      $firebaseObject(this.postsArray.child(key)).$remove();
+      $firebaseObject(this.postListArray.child(post.id)).$remove();
+      this.postSuccess = false;
     };
   }
 }

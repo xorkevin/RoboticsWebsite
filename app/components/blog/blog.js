@@ -2,9 +2,18 @@ import {app} from '../../module.js';
 // import 'firebase'; causes error due to webpack use strict
 import {blogconfig} from '../../config.js';
 
+let apiConfig = blogconfig.roboticsfirebase;
+
 class BlogController {
   constructor() {
-    // this.fbblogref = new Firebase(blogconfig.roboticsfirebase); causes controller not to be instantiable 
+    this.getYear = (year)=>{
+      this.blogList = new Firebase(apiConfig.main + '/' + apiConfig.postList);
+    };
+
+    this.getPost = (year, key)=>{
+
+    };
+
   }
 }
 
