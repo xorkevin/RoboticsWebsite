@@ -5,6 +5,8 @@ import {blogconfig} from '../../config.js';
 
 class BlogController {
   constructor($firebaseObject, $firebaseArray, $routeParams) {
+    // this.$firebaseObject = $firebaseObject;
+    // this.$firebaseArray = $firebaseArray;
     this.routeParams = $routeParams;
 
     this.setPage = (pageid)=>{
@@ -47,18 +49,17 @@ class BlogController {
       let contentArray = content.split('[!]');
       contentArray.pop();
       for(let section of contentArray){
-        section = section.trim();
-        let colonIndex = contentArray.indexOf(':');
-        let type = section.slice(0, colonIndex);
-        let data = section.slice(colonIndex+1);
+        let [type, data] = section.trim().split('[:]');
         if(type == 'p'){
           x += '<p>' + data + '</p>';
         } else if(type == 'img'){
-          x += '<img src="' + data + '" class="img-responsive">'; //perhaps create smaller column 
+          x += '<img src="' + data + '" class="img-responsive">'; //perhaps create smaller column
         } else if(type == 'video'){
 
         }
+        x+='<br>';
       }
+      return x;
     };
 
   }
@@ -69,10 +70,17 @@ class BlogController {
     let id = this.routeParams.id;
     let year = id.slice(0, 4);
     this.setPage(pageid);
-    this.getYear(year);
-    if(id == 'home'){
-
+    if(id == 'landing'){
+      (new Firebase(this.api.main + '/' + this.api.currentYear)).once('value', (data)=>{
+        year = data.val();
+        this.getYear(year);
+        this.postListIter.$loaded().then((data)=>{
+          id = data[data.length-1].id;
+          this.getPost(id);
+        });
+      });
     } else {
+      this.getYear(year);
       this.getPost(id);
     }
   }

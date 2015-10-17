@@ -6,18 +6,20 @@
   <div class="row">
     <div class="col-md-3">
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="post in blog.postListIter | orderBy: 'id'">
-          <h5>{{post.title}}</h5> {{post.date}}
+        <li class="list-group-item" ng-repeat="post in blog.postListIter | orderBy: 'id' : true">
+          <a ng-link="blog({pageid: blog.pageid, id: post.id})">
+            <h5>{{post.title}}</h5> {{post.date}}
+          </a>
         </li>
       </ul>
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-6 col-md-offset-2">
       <div class="page-header">
         <h2>{{blog.blogtitle}}</h2>
         <h4>{{blog.blogdate}}</h4>
       </div>
-      {{blog.blogcontent}}
+      <div ng-bind-html="blog.blogcontent"></div>
     </div>
   </div>
 </div>

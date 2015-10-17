@@ -44,7 +44,7 @@ class BlogeditorController {
         this.postSuccess = false;
         return;
       }
-      if(aYear == ''){
+      if(aYear == '' || aDate == '' || aTitle == '' || aContent == ''){
         this.postSuccess = false;
         return;
       }
@@ -73,8 +73,6 @@ class BlogeditorController {
       this.blogtitle = '';
       this.blogcontent = '';
       this.postSuccess = true;
-
-      this.logout();
     };
 
     this.delete = (post)=>{
@@ -90,7 +88,6 @@ class BlogeditorController {
         $firebaseObject(this.postsArray.child(key)).$remove();
         postListEntry.$remove();
         this.postSuccess = false;
-        this.logout();
       });
     };
   }
