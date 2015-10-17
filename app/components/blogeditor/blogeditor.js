@@ -84,12 +84,13 @@ class BlogeditorController {
       if(!confirm('are you sure you want to delete post: ' + post.id)){
         return;
       }
-      console.log(post);
       let postListEntry = $firebaseObject(this.postListArray.child(post.id));
-      let key = postListEntry.idkey;
-      $firebaseObject(this.postsArray.child(key)).$remove();
-      $firebaseObject(this.postListArray.child(post.id)).$remove();
-      this.postSuccess = false;
+      postListEntry.$loaded().then(()=>{
+        let key = postListEntry.idkey;
+        $firebaseObject(this.postsArray.child(key)).$remove();
+        postListEntry.$remove();
+        this.postSuccess = false;
+      });
     };
   }
 }
