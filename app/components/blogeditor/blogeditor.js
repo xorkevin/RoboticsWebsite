@@ -90,6 +90,7 @@ class BlogeditorController {
         $firebaseObject(this.postsArray.child(key)).$remove();
         postListEntry.$remove();
         this.postSuccess = false;
+        this.logout();
       });
     };
   }
