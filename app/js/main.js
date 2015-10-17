@@ -17,7 +17,7 @@ class AppController {
         'nav'   : 'navbar',
         'footer': 'footer'
       }, as: 'home'},
-      {path: '/blog', components: {
+      {path: '/blog/:pageid/:id', components: {
         'header': 'header',
         'main'  : 'blog',
         'nav'   : 'navbar',

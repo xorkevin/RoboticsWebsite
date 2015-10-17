@@ -1,3 +1,23 @@
 <div class = "container">
-  {{blog.helloworld}}
+  <div class="page-header">
+    <h1>PROTOBLOG</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="list-group">
+        <li class="list-group-item" ng-repeat="post in blog.postListIter | orderBy: 'id'">
+          <h5>{{post.title}}</h5> {{post.date}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-9">
+      <div class="page-header">
+        <h2>{{blog.blogtitle}}</h2>
+        <h4>{{blog.blogdate}}</h4>
+      </div>
+      {{blog.blogcontent}}
+    </div>
+  </div>
 </div>
