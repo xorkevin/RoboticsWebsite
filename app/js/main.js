@@ -18,13 +18,13 @@ class AppController {
         'footer': 'footer'
       }, as: 'home'},
       {path: '/blog/:pageid/:id', components: {
-        'header': 'header',
+        'header': 'minheader',
         'main'  : 'blog',
         'nav'   : 'navbar',
         'footer': 'footer'
       }, as: 'blog'},
       {path: '/blogeditor', components: {
-        'header': 'header',
+        'header': 'minheader',
         'main'  : 'blogeditor',
         'nav'   : 'navbar',
         'footer': 'footer'
