@@ -70,7 +70,11 @@
 
 	__webpack_require__(15);
 
-	__webpack_require__(17);
+	__webpack_require__(16);
+
+	__webpack_require__(18);
+
+	__webpack_require__(19);
 
 	var AppController = function AppController($router) {
 	  _classCallCheck(this, AppController);
@@ -80,7 +84,12 @@
 	      'main': 'home',
 	      'nav': 'navbar',
 	      'footer': 'footer'
-	    }, as: 'home' }, { path: '/blog/:pageid/:id', components: {
+	    }, as: 'home' }, { path: '/blog', components: {
+	      'header': 'minheader',
+	      'main': 'bloghome',
+	      'nav': 'navbar',
+	      'footer': 'footer'
+	    }, as: 'bloghome' }, { path: '/blog/:pageid/:id', components: {
 	      'header': 'minheader',
 	      'main': 'blog',
 	      'nav': 'navbar',
@@ -21942,6 +21951,22 @@
 
 	'use strict';
 
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var _moduleJs = __webpack_require__(4);
+
+	var MinheaderController = function MinheaderController() {
+	  _classCallCheck(this, MinheaderController);
+	};
+
+	_moduleJs.app.controller('MinheaderController', [MinheaderController]);
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -21952,7 +21977,7 @@
 
 	// import 'firebase'; causes error due to webpack use strict
 
-	var _configJs = __webpack_require__(16);
+	var _configJs = __webpack_require__(17);
 
 	var BlogController = (function () {
 	  function BlogController($firebaseObject, $firebaseArray, $routeParams) {
@@ -21966,9 +21991,7 @@
 
 	    this.setPage = function (pageid) {
 	      _this.pageid = pageid;
-	      if (pageid == 'p') {
-	        _this.api = _configJs.blogconfig.roboticsfirebase;
-	      } else if (pageid == 'r') {} else if (pageid == 'a') {} else if (pageid == 'o') {} else if (pageid == 'g') {}
+	      _this.api = _configJs.blogconfig[pageid];
 	    };
 
 	    this.getYear = function (year) {
@@ -22068,7 +22091,7 @@
 	_moduleJs.app.controller('BlogController', ['$firebaseObject', '$firebaseArray', '$routeParams', BlogController]);
 
 /***/ },
-/* 16 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -22077,7 +22100,23 @@
 	  value: true
 	});
 	var blogconfig = {
-	  roboticsfirebase: {
+	  bloglist: [{
+	    title: 'PROTOTYPES',
+	    pageid: 'p'
+	  }, {
+	    title: 'RESISTORS',
+	    pageid: 'r'
+	  }, {
+	    title: 'ATHENA',
+	    pageid: 'a'
+	  }, {
+	    title: 'OMEGA',
+	    pageid: 'o'
+	  }, {
+	    title: 'GOATS',
+	    pageid: 'g'
+	  }],
+	  p: {
 	    main: 'https://evhsroboticsblog.firebaseio.com',
 	    postList: 'postList',
 	    posts: 'posts',
@@ -22088,7 +22127,7 @@
 	exports.blogconfig = blogconfig;
 
 /***/ },
-/* 17 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22099,17 +22138,23 @@
 
 	// import 'firebase'; causes error due to webpack use strict
 
-	var _configJs = __webpack_require__(16);
+	var _configJs = __webpack_require__(17);
 
-	var apiConfig = _configJs.blogconfig.roboticsfirebase;
+	var apiConfig = undefined;
 
 	var BlogeditorController = function BlogeditorController($firebaseObject, $firebaseArray, $firebaseAuth) {
 	  var _this = this;
 
 	  _classCallCheck(this, BlogeditorController);
 
-	  this.fb = new Firebase(apiConfig.main);
 	  this.loggedin = false;
+
+	  this.setPage = function (pageid) {
+	    apiConfig = _configJs.blogconfig[pageid];
+	    _this.fb = new Firebase(apiConfig.main);
+	    _this.auth = $firebaseAuth(_this.fb);
+	  };
+
 	  this.setYear = function (year) {
 	    _this.blogyearsaved = year;
 	    _this.postListArray = _this.fb.child(apiConfig.postList).child(year);
@@ -22117,8 +22162,6 @@
 	    _this.postsArray = _this.fb.child(apiConfig.posts).child(year);
 	    _this.postsArrayIter = $firebaseArray(_this.postsArray);
 	  };
-
-	  this.auth = $firebaseAuth(this.fb);
 
 	  this.authuid = "Logged out";
 
@@ -22195,6 +22238,26 @@
 	};
 
 	_moduleJs.app.controller('BlogeditorController', ['$firebaseObject', '$firebaseArray', '$firebaseAuth', BlogeditorController]);
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var _moduleJs = __webpack_require__(4);
+
+	var _configJs = __webpack_require__(17);
+
+	var BloghomeController = function BloghomeController() {
+	  _classCallCheck(this, BloghomeController);
+
+	  this.bloglist = _configJs.blogconfig.bloglist;
+	};
+
+	_moduleJs.app.controller('BloghomeController', [BloghomeController]);
 
 /***/ }
 /******/ ]);

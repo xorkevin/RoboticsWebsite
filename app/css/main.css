@@ -5,7 +5,7 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css");
 
-
+/* header */
 .main-header {
   height: 80vh;
   min-height: -moz-min-content;
@@ -41,6 +41,7 @@ a.main-header-text-accent:hover {
   height: 108px;
 }
 
+/* navbar */
 .main-navbar {
 
 }
@@ -60,6 +61,13 @@ a.main-header-text-accent:hover {
   -ms-transition: background 250ms linear;
   transition: background 250ms linear;
 }
+
+/* blog */
+
+
+
+
+/* modifications/util */
 
 .angular-google-map-container {
   height: 50vh;

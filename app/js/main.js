@@ -5,8 +5,10 @@ import '../components/home/home';
 import '../components/navbar/navbar';
 import '../components/footer/footer';
 import '../components/header/header';
+import '../components/minheader/minheader';
 import '../components/blog/blog';
 import '../components/blogeditor/blogeditor';
+import '../components/bloghome/bloghome';
 
 class AppController {
   constructor($router){
@@ -17,6 +19,12 @@ class AppController {
         'nav'   : 'navbar',
         'footer': 'footer'
       }, as: 'home'},
+      {path: '/blog', components: {
+        'header': 'minheader',
+        'main'  : 'bloghome',
+        'nav'   : 'navbar',
+        'footer': 'footer'
+      }, as: 'bloghome'},
       {path: '/blog/:pageid/:id', components: {
         'header': 'minheader',
         'main'  : 'blog',

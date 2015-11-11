@@ -11,17 +11,7 @@ class BlogController {
 
     this.setPage = (pageid)=>{
       this.pageid = pageid;
-      if(pageid == 'p'){
-        this.api = blogconfig.roboticsfirebase;
-      } else if(pageid == 'r'){
-
-      } else if(pageid == 'a'){
-
-      } else if(pageid == 'o'){
-
-      } else if(pageid == 'g'){
-
-      }
+      this.api = blogconfig[pageid];
     };
 
     this.getYear = (year)=>{
