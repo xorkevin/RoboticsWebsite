@@ -22121,6 +22121,30 @@
 	    postList: 'postList',
 	    posts: 'posts',
 	    currentYear: 'currentYear'
+	  },
+	  g: {
+	    main: 'https://goatsblogftc.firebaseio.com',
+	    postList: 'postList',
+	    posts: 'posts',
+	    currentYear: 'currentYear'
+	  },
+	  r: {
+	    main: 'https://resistorsblogftc.firebaseio.com',
+	    postList: 'postList',
+	    posts: 'posts',
+	    currentYear: 'currentYear'
+	  },
+	  o: {
+	    main: 'https://omegablogftc.firebaseio.com',
+	    postList: 'postList',
+	    posts: 'posts',
+	    currentYear: 'currentYear'
+	  },
+	  a: {
+	    main: 'https://athenablogftc.firebaseio.com',
+	    postList: 'postList',
+	    posts: 'posts',
+	    currentYear: 'currentYear'
 	  }
 	};
 
@@ -22245,17 +22269,30 @@
 
 	'use strict';
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var _moduleJs = __webpack_require__(4);
 
 	var _configJs = __webpack_require__(17);
 
-	var BloghomeController = function BloghomeController() {
-	  _classCallCheck(this, BloghomeController);
+	var BloghomeController = (function () {
+	  function BloghomeController() {
+	    _classCallCheck(this, BloghomeController);
 
-	  this.bloglist = _configJs.blogconfig.bloglist;
-	};
+	    this.bloglist = _configJs.blogconfig.bloglist;
+	  }
+
+	  _createClass(BloghomeController, [{
+	    key: 'activate',
+	    value: function activate() {
+	      $("html, body").animate({ scrollTop: 0 }, 125);
+	    }
+	  }]);
+
+	  return BloghomeController;
+	})();
 
 	_moduleJs.app.controller('BloghomeController', [BloghomeController]);
 

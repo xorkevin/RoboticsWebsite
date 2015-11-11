@@ -5,6 +5,10 @@ class BloghomeController {
   constructor() {
     this.bloglist = blogconfig.bloglist;
   }
+
+  activate(){
+    $("html, body").animate({ scrollTop: 0}, 125);
+  }
 }
 
 app.controller('BloghomeController', [BloghomeController]);

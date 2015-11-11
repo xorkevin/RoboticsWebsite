@@ -28,13 +28,25 @@ let blogconfig = {
     currentYear: 'currentYear'
   },
   g: {
-    main: 'https://goatsblogftc.firebaseio.com', 
+    main: 'https://goatsblogftc.firebaseio.com',
     postList: 'postList',
     posts: 'posts',
     currentYear: 'currentYear'
   },
   r: {
     main: 'https://resistorsblogftc.firebaseio.com',
+    postList: 'postList',
+    posts: 'posts',
+    currentYear: 'currentYear'
+  },
+  o: {
+    main: 'https://omegablogftc.firebaseio.com',
+    postList: 'postList',
+    posts: 'posts',
+    currentYear: 'currentYear'
+  },
+  a: {
+    main: 'https://athenablogftc.firebaseio.com',
     postList: 'postList',
     posts: 'posts',
     currentYear: 'currentYear'
