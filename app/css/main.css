@@ -5,6 +5,7 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
 @import url("https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css");
 
+
 /* header */
 .main-header {
   height: 80vh;
@@ -41,6 +42,7 @@ a.main-header-text-accent:hover {
   height: 108px;
 }
 
+
 /* navbar */
 .main-navbar {
 
@@ -62,9 +64,48 @@ a.main-header-text-accent:hover {
   transition: background 250ms linear;
 }
 
+
 /* blog */
+.blog-listcard-back {
 
+}
+.blog-listcard-back#blog-background-p {
+  background: url(../assets/BlogBanners/blogprototypes.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
 
+.blog-listcard-alpha {
+  background: rgba(61, 186, 157, 0.33);
+  -webkit-transition: background 250ms linear;
+  -moz-transition: background 250ms linear;
+  -o-transition: background 250ms linear;
+  -ms-transition: background 250ms linear;
+  transition: background 250ms linear;
+}
+
+.blog-listcard-alpha:hover {
+  background: rgba(61, 186, 157, 0.75);
+  -webkit-transition: background 250ms linear;
+  -moz-transition: background 250ms linear;
+  -o-transition: background 250ms linear;
+  -ms-transition: background 250ms linear;
+  transition: background 250ms linear;
+}
+
+.blog-listcard {
+  height: 20vh;
+  min-height: -moz-min-content;
+  min-height: -webkit-min-content;
+  min-height: min-content;
+}
+
+.blog-listcard-content {
+  color: #C4FFF1;
+}
 
 
 /* modifications/util */

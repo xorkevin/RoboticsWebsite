@@ -20,9 +20,21 @@ let blogconfig = {
       title: 'GOATS',
       pageid: 'g'
     }
-  ], 
+  ],
   p: {
     main: 'https://evhsroboticsblog.firebaseio.com',
+    postList: 'postList',
+    posts: 'posts',
+    currentYear: 'currentYear'
+  },
+  g: {
+    main: 'https://goatsblogftc.firebaseio.com', 
+    postList: 'postList',
+    posts: 'posts',
+    currentYear: 'currentYear'
+  },
+  r: {
+    main: 'https://resistorsblogftc.firebaseio.com',
     postList: 'postList',
     posts: 'posts',
     currentYear: 'currentYear'

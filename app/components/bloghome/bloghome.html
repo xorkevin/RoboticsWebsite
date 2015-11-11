@@ -6,10 +6,18 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
-        <div class="col-sm-6" ng-repeat="blog in bloghome.bloglist">
-          <a ng-link="blog({pageid: blog.pageid, id: 'landing'})">
-            <h5>{{blog.title}}</h5>
-          </a>
+        <div class="card-row" ng-repeat="blog in bloghome.bloglist" ng-class=" $first ? 'col-sm-8 col-sm-offset-2' : 'col-sm-6'">
+          <div id="{{'blog-background-' + blog.pageid}}" class="blog-listcard-back">
+            <div class="blog-listcard-alpha">
+              <a ng-link="blog({pageid: blog.pageid, id: 'landing'})">
+                <div class="blog-listcard vcenter-parent">
+                  <div class="blog-listcard-content vcenter-child text-center">
+                    <h3>{{blog.title}}</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
