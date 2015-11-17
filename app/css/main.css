@@ -77,6 +77,22 @@ a.main-header-text-accent:hover {
   background-size: cover;
   background-position: center;
 }
+.blog-listcard-back#blog-background-a {
+  background: url(../assets/BlogBanners/blogathena.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+.blog-listcard-back#blog-background-o {
+  background: url(../assets/BlogBanners/blogomega.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
 
 .blog-listcard-alpha {
   background: rgba(61, 186, 157, 0.33);
@@ -148,6 +164,10 @@ a.main-header-text-accent:hover {
 .vcenter-child {
   display: inline-block;
   vertical-align: middle;
+}
+
+.kevin2 {
+  font-size: 10px;
 }
 
 .kevin {
